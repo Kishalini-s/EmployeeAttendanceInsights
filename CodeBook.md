@@ -14,15 +14,10 @@ The first step of cleaning involves combining data from different sheets in an E
 - Duplicate the table and name the duplicated table as **Template**.
 
 #### **Step 2: Configure the Template Query**
-- Duplicate the **Template** query again and call the new query **Template**.
 - In the **Template** query, select one worksheet to use as a reference to build the query. In this case, we use the worksheet **June 2022**.
-
   ![Attach Screenshot of June 2022 Worksheet](images/Filtered_rows.PNG)
-
 - Remove all the columns except for the **Data** column.
-
   ![Attach Screenshot of Removed Columns](images/Removed_Other_columns.PNG)
-
 - Click the **Table** link inside the **Data** cell to view the worksheet contents.
 - If there is a **Changed Type** step in the query, delete it because it might not be required for the new transformation.
 
@@ -33,7 +28,6 @@ The first step of cleaning involves combining data from different sheets in an E
   - **Column2** to **Name**
   - **Atliq** to **Employee Code**
   ![Attach Screenshot ](images/Data%20-%20Promoted%20Headers%2C%20Renamed%20column%20names.PNG)
-
 - **Unpivot Columns**: Unpivot all other columns except **Name** and **Employee Code**.
   ![Attach Screenshot of Unpivoting Columns](images/Unpivoted.PNG)
 - **Change Data Type**: Change the **Date** column data type to **Date** and remove any errors that occur in the data.
@@ -42,13 +36,11 @@ The first step of cleaning involves combining data from different sheets in an E
 #### **Step 4: Create a Parameter**
 - Create a new **parameter** by navigating to **Manage Parameters** > **New Parameter**.
 - Call the parameter **Worksheet**, set the data type to **Text**, and set it to return the name of the worksheet you chose (e.g., **June 2022**).
-
   ![Attach Screenshot of Parameter Creation](images/New%20Parameter.PNG)
 
 #### **Step 5: Modify Template Query**
 - Go back to the **Template** query and locate the step called **Filtered Rows**, where you filtered to a single worksheet. 
 - Click the gear icon next to the **Filtered Rows** step to edit the filter condition. The filter should be based on the new parameter (e.g., **Worksheet**).
-
   ![Attach Screenshot of Filtered Rows](images/Applied%20created%20parameter.PNG)
 
 #### **Step 6: Create a Function**
@@ -58,16 +50,14 @@ The first step of cleaning involves combining data from different sheets in an E
 #### **Step 7: Filter and Invoke Custom Function**
 - Go back to the original table and apply a filter to select only the data for **June 2022**, **May 2022**, and **Apr 2022**.
 - Next, go to the **Add Column** tab in Power Query Editor, click the **Invoke Custom Function** button, and invoke the **GetData** function. Pass in the contents of the **Name** column as the only parameter to the function.
-
   ![Attach Screenshot of Custom Function Invocation](images/Invoked_custom_column.PNG)
 
 #### **Step 8: Expand and Aggregate Data**
 - After invoking the custom function, click the **Expand** button on the new column to expand the nested tables.
 - Remove any unnecessary columns from the expanded data and ensure you have combined the data from all the worksheets into a single table as needed.
-
-  ![Attach Screenshot of Expanded Data](images/Cleaned_data.PNG)
-
----
+  
+   ![Attach Screenshot of Expanded Data](images/Cleaned_data.PNG)
+  
 
 ### Summary of Data Cleaning Steps:
 1. Combine data from different sheets with different column names.
